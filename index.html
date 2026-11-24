@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#101722"><meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<link rel="manifest" href="manifest.webmanifest"><link rel="stylesheet" href="styles.css">
+<title>STITCH CONTROL</title>
+</head>
+<body>
+<div class="app-shell">
+  <aside class="sidebar">
+    <div class="brand"><div class="brand-mark">SC</div><div><b>STITCH CONTROL</b><small>УПРАВЛЕНИЕ ВЫШИВКОЙ</small></div></div>
+    <nav id="nav">
+      <button class="nav-item active" data-page="dashboard">▦ <span>Главная</span></button>
+      <button class="nav-item" data-page="orders">▤ <span>Заказы</span></button>
+      <button class="nav-item" data-page="clients">♙ <span>Клиенты</span></button>
+      <button class="nav-item" data-page="finance">₽ <span>Финансы</span></button>
+      <button class="nav-item" data-page="materials">▧ <span>Материалы</span></button>
+      <button class="nav-item" data-page="tasks">◷ <span>Задачи</span></button>
+    </nav>
+    <div class="side-bottom"><span class="live-dot"></span> Локальный режим <small>Облачная синхронизация подключается отдельно</small></div>
+  </aside>
+  <main class="main">
+    <header class="topbar"><div><div class="eyebrow">МАСТЕРСКАЯ / ОБЗОР</div><h1 id="page-title">Главная</h1></div><button class="primary" id="new-order">＋ Новый заказ</button></header>
+    <section id="content"></section>
+    <footer>STITCH CONTROL <span>•</span> RUB <span>•</span> Персональная CRM</footer>
+  </main>
+</div>
+<div class="mobile-nav" id="mobile-nav">
+  <button data-page="dashboard" class="active">▦<small>Главная</small></button><button data-page="orders">▤<small>Заказы</small></button>
+  <button data-page="clients">♙<small>Клиенты</small></button><button data-page="finance">₽<small>Финансы</small></button><button data-page="tasks">◷<small>Задачи</small></button>
+</div>
+<div class="modal-backdrop" id="modal-backdrop"><div class="modal" role="dialog" aria-modal="true"><div class="modal-head"><div><div class="eyebrow">НОВАЯ ЗАПИСЬ</div><h2 id="modal-title">Новый заказ</h2></div><button class="icon-btn" id="close-modal">✕</button></div>
+<form id="order-form">
+<input type="hidden" id="order-id">
+<div class="form-grid">
+<label>Имя клиента<input id="client" required placeholder="Например, Анна"></label>
+<label>Телефон<input id="phone" placeholder="+7 ..."></label>
+<label>Источник<select id="source"><option>Instagram</option><option>Лично</option><option>Рекомендация</option><option>Другое</option></select></label>
+<label>Тип заказа<select id="kind"><option>Вышивка на изделии клиента</option><option>Собственное изделие</option><option>Спецодежда / корпоративный заказ</option><option>Разработка дизайна</option></select></label>
+<label class="wide">Изделия и позиции<textarea id="items" rows="2" placeholder="Например: худи чёрное — 1 шт.; шеврон — 2 шт."></textarea></label>
+<label>Размер вышивки<input id="size" placeholder="Например, 10 × 8 см"></label>
+<label>Количество стежков<input id="stitches" type="number" min="0" placeholder="36000"></label>
+<label>Срок выполнения<input id="deadline" type="date"></label>
+<label>Статус<select id="status"><option>Новая заявка</option><option>Расчёт стоимости</option><option>Ожидает предоплаты</option><option>В производстве</option><option>Готов</option><option>Выдан / завершён</option></select></label>
+<label>Стоимость, ₽<input id="price" type="number" min="0" step="1" placeholder="1200"></label>
+<label>Получено, ₽<input id="paid" type="number" min="0" step="1" placeholder="0"></label>
+<label class="wide">Примечания<textarea id="notes" rows="2" placeholder="Цвет нитей, расположение, пожелания клиента..."></textarea></label>
+</div>
+<div class="form-actions"><button type="button" class="secondary" id="cancel-modal">Отмена</button><button class="primary" type="submit">Сохранить заказ</button></div>
+</form></div></div>
+<script src="app.js"></script><script>if ("serviceWorker" in navigator) window.addEventListener("load",()=>navigator.serviceWorker.register("./sw.js").catch(()=>{}));</script>
+</body></html>
